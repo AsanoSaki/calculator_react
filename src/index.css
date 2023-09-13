@@ -1,13 +1,47 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.calculator {
+  box-sizing: border-box;
+  display: grid;  /* 网格式布局 */
+  grid-template-columns: repeat(4, 6rem);  /* 四列 */
+  grid-template-rows: minmax(6rem, auto) repeat(5, 4rem);
+  width: 24rem;
+  margin: 0 auto;  /* 居中 */
+}
+
+.output {
+  box-sizing: border-box;
+  grid-column: 1/ span 4;  /* output区域从第一格开始占4格 */
+  background-color: rgba(234, 234, 235, 0.75);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 10px 0 10px;
+  word-wrap: break-word;  /* 如果输出内容过长则截断 */
+  word-break: break-all;  /* 在任意位置均可断开 */
+}
+
+.last_output {
+  font-size: 1rem;
+  user-select: none;  /* 不可选中该文本 */
+}
+
+.current_output {
+  font-size: 3rem;
+}
+
+.calculator > button {
+  background-color: #FFFFFF;
+}
+
+.calculator > button:hover {  /* 鼠标悬停 */
+  background-color: #FDFBFB;
+}
+
+.calculator > button:active {  /* 鼠标长按 */
+  background-color: #FCF8F7;
 }
