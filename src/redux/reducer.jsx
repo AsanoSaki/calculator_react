@@ -32,7 +32,7 @@ const reducer = (state={
 }, action) => {
     switch(action.type) {
         case ACTIONS.ADD_DIGIT:
-            if (state.overwrite)
+            if (state.overwrite)  // 完成一次运算后继续输入数字应该是覆盖之前的计算结果
                 return { ...state, overwrite: false, currentOperand: action.digit }
             if (state.currentOperand === '0' && action.digit === '0')  // 多次按0只显示一个
                 return state;

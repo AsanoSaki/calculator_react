@@ -30,6 +30,18 @@ class NavBar extends Component {
         }
     }
 
+    render_editor = () => {
+        if (this.props.is_login) {
+            return (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/editor">Editor</Link>
+                </li>
+            )
+        } else {
+            return '';
+        }
+    }
+
     render_userinfo = () => {  // 是否渲染登录登出界面与用户信息
         if (this.props.is_login) {
             return (
@@ -67,7 +79,7 @@ class NavBar extends Component {
         return (
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">AsanoSaki's Calculator</Link>
+                    <Link className="navbar-brand" to="/">AsanoSaki's Calculator & Editor</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -77,6 +89,7 @@ class NavBar extends Component {
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
                             {this.render_calculator()}
+                            {this.render_editor()}
                             <li className="nav-item">
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>

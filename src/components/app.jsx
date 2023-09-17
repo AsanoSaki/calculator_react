@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import NavBar from './navbar';
 import Home from './content/home';
 import Calculator from './content/calculator';
+import Editor from './content/editor';
 import About from './content/about';
 import Login from './content/login';
 import Register from './content/register';
@@ -40,6 +41,9 @@ class App extends Component {
                         <Route path='/home' element={<Home />}></Route>
                         <Route path='/calculator' element={
                             this.state.is_login ? <Calculator /> : <Navigate replace to='/login' />
+                        }></Route>
+                        <Route path='/editor' element={
+                            this.state.is_login ? <Editor /> : <Navigate replace to='/login' />
                         }></Route>
                         <Route path='/about' element={<About />}></Route>
                         <Route path='/login' element={
