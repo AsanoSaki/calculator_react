@@ -8,6 +8,7 @@ class NavBar extends Component {
     handleLogout = () => {
         $.ajax({
             url: 'http://localhost:8000/logout/',
+            // url: 'http://8.130.54.44:8000/logout/',  // 部署在云服务器上
             type: 'GET',
             success: (resp) => {
                 console.log(resp);

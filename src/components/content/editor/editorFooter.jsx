@@ -62,6 +62,7 @@ class EditorFooter extends Component {
         this.setState({run_status: 'Running'});  // 设置run_status为执行代码中
         $.ajax({
             url: 'http://localhost:8000/runcode/',
+            // url: 'http://8.130.54.44:8000/runcode/',  // 部署在云服务器上
             type: 'GET',
             data: {
                 value: this.props.value,
@@ -73,7 +74,7 @@ class EditorFooter extends Component {
                 console.log(resp);
                 if (resp.status === 'Success') {
                     let output = resp.output;
-                    if (output.charAt(output.length - 1) === '\n')
+                    if (output.charAt(output.length - 1) === '\n')  // 去掉最后的空行
                         output = output.substr(0, output.length - 1);
                     this.setState({output_content: output});
                     // this.updateOutputHeight();
@@ -82,6 +83,12 @@ class EditorFooter extends Component {
                     this.setState({run_time: Math.round(resp.cputime)});
                 } else {  // 没有成功运行
                     this.setState({run_status: resp.status});
+                    // 在输出框输出错误信息
+                    let err_info = resp.error;
+                    if (err_info.charAt(err_info.length - 1) === '\n')  // 去掉最后的空行
+                        err_info = err_info.substr(0, err_info.length - 1);
+                    this.setState({output_content: err_info});
+                    setTimeout(this.updateOutputHeight, 1);
                 }
             }
         });

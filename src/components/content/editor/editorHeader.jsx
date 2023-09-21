@@ -51,6 +51,8 @@ class EditorHeader extends Component {
         else if (demo === 3)
             value = '#include <iostream>\nusing namespace std;\n\nint main() {\n\tint a;\n\tfor (int i = 0; i < 1e9; i++) cin >> a;\n\treturn 0;\n}';
         else if (demo === 4)
+            value = '#include <iostream>\nusing namespace std;\n\nint main() {\n\tcou << "Hello World" << endl;\n\tretun 0;\n}';
+        else if (demo === 5)
             value = 'def f(name):\n\tprint(\'Hello\', name)\n\nf(\'Asanosaki\')';
         this.props.setValue(value);
     }
@@ -116,6 +118,7 @@ class EditorHeader extends Component {
                                 <li><div className="dropdown-item" style={{cursor: 'pointer'}} onClick={() => {this.setValue(2)}}>Code Demo 2</div></li>
                                 <li><div className="dropdown-item" style={{cursor: 'pointer'}} onClick={() => {this.setValue(3)}}>Code Demo 3</div></li>
                                 <li><div className="dropdown-item" style={{cursor: 'pointer'}} onClick={() => {this.setValue(4)}}>Code Demo 4</div></li>
+                                <li><div className="dropdown-item" style={{cursor: 'pointer'}} onClick={() => {this.setValue(5)}}>Code Demo 5</div></li>
                             </ul>
                         </li>
                     </ul>

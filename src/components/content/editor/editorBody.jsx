@@ -4,7 +4,9 @@ import { langs } from '@uiw/codemirror-extensions-langs';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
+import { autocompletion } from '@codemirror/autocomplete';
 import Card from '../card';
+import COMPLETIONS from './completions';
 
 class EditorBody extends Component {
     state = {  };
@@ -27,6 +29,16 @@ class EditorBody extends Component {
         console.log(value);
     }
 
+    myCompletions = (context) => {
+        let word = context.matchBefore(/\w*/)
+        if (word.from === word.to && !context.explicit)
+            return null
+        return {
+            from: word.from,
+            options: COMPLETIONS[this.props.language],
+        }
+    }
+
     render() {
         return (
             <Card>
@@ -41,6 +53,7 @@ class EditorBody extends Component {
                             if (v.docChanged)
                                 this.setValue(v.state.doc.toString());
                         }),
+                        autocompletion({override: [this.myCompletions]}),  // 自动补全
                     ]}
                     basicSetup={{
                         tabSize: parseInt(this.props.tab_size),

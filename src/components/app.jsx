@@ -19,6 +19,7 @@ class App extends Component {
     componentDidMount() {  // Ajax一般写在这个函数里，当组件被挂载完成后执行函数
         $.ajax({
             url: 'http://localhost:8000/getinfo/',
+            // url: 'http://8.130.54.44:8000/getinfo/',  // 部署在云服务器上
             type: 'GET',
             success: (resp) => {
                 console.log(resp);

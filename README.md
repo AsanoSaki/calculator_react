@@ -2,7 +2,7 @@
 
 ## 1. 项目介绍
 
-V1.0 版本介绍：
+【V1.0 版本介绍】：
 
 本项目前端界面基于 React 开发，计算器页面的各组件间的状态由 Redux 维护，通过 `npm` 部署并一键打包静态文件至后端，后端采用 Django 框架实现注册/登录/登出 API 接口，同时使用 Django 渲染前端界面，解决不同端口的跨域问题。
 
@@ -13,13 +13,15 @@ Django 超级管理员账户：
  - 用户名：`admin`
  - 密码：`admin`
 
-V2.0 更新：
+【V2.0 更新】：
 
-添加了网页端在线编译器，前端由 React 结合 CodeMirror 搭建，后端运用 Python Subprocess 子进程相关技术，实现在线编辑与运行代码等功能。
+添加了网页端在线编译器，前端由 React 结合 CodeMirror 搭建，后端运用 Python Subprocess 子进程相关技术，实现在线编辑与运行代码等功能（V2.0 版本仅支持 C++、Python）。
 
 在线编辑器 Demo：
 
 ![Demo](./demo/Code_Editer_Demo.gif)
+
+ - V2.1 更新：实现 C++、Python 的基础代码补全功能（关键字补全）。
 
 ## 2. 环境要求
 
@@ -51,6 +53,10 @@ V2.0 更新：
  - @uiw/codemirror-theme-github 4.21.13：`npm install @uiw/codemirror-theme-github`
  - @uiw/codemirror-theme-okaidia 4.21.13：`npm install @uiw/codemirror-theme-okaidia`
  - @uiw/codemirror-theme-vscode 4.21.13：`npm install @uiw/codemirror-theme-vscode`
+
+V2.1 更新：
+
+ - @codemirror/autocomplete 6.9.1：`npm install @codemirror/autocomplete`
 
 一键安装 `package.json` 里的所有依赖文件：
 

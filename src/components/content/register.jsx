@@ -21,6 +21,7 @@ class Register extends Component {
         } else {  // 用jQuery向后端请求登录
             $.ajax({
                 url: 'http://localhost:8000/register/',
+                // url: 'http://8.130.54.44:8000/register/',  // 部署在云服务器上
                 type: 'GET',
                 data: {
                     username: this.state.username,
