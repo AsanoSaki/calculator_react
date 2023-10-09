@@ -1,5 +1,6 @@
 from django.contrib.auth import login
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from app.models.user import User
 from django.http import JsonResponse
 
 def register(request):

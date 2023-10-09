@@ -6,7 +6,7 @@ class NotFound extends Component {
     render() {
         return (
             <Card>
-                <h3>NotFound</h3>
+                <h3>404 NotFound</h3>
             </Card>
         );
     }

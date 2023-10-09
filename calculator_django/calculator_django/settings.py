@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'corsheaders',  # 注册app corsheaders
 ]
 
+# 设置使用自己创建的User表
+AUTH_USER_MODEL = 'app.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -135,3 +138,12 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = ('*')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '1195595343@qq.com'
+EMAIL_HOST_PASSWORD = 'sxgcascgglfujaib'
+
+RECIPIENT_ADDRESS = ['1195595343@qq.com']

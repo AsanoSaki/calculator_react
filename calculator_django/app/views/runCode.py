@@ -81,7 +81,7 @@ def runPython(value, code_input):
     }
 
     proc = subprocess.Popen(  # Python不需要编译，直接创建子进程运行即可
-        args=['python', './' + 'test.py'],
+        args=['python', './' + 'test.py'],  # 如果部署至Linux，需要将python改为python3
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,

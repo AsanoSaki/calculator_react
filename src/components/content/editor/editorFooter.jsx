@@ -18,7 +18,8 @@ class EditorFooter extends Component {
 
     updateOutputHeight = () => {
         let content = this.state.output_content;
-        let line_cnt = content.split('\n').length;
+        let line_cnt = 1;
+        if (content) line_cnt = content.split('\n').length;
         console.log(content);
         console.log(line_cnt);
         this.setState({output_rows: line_cnt});
@@ -85,7 +86,7 @@ class EditorFooter extends Component {
                     this.setState({run_status: resp.status});
                     // 在输出框输出错误信息
                     let err_info = resp.error;
-                    if (err_info.charAt(err_info.length - 1) === '\n')  // 去掉最后的空行
+                    if (err_info && err_info.charAt(err_info.length - 1) === '\n')  // 去掉最后的空行
                         err_info = err_info.substr(0, err_info.length - 1);
                     this.setState({output_content: err_info});
                     setTimeout(this.updateOutputHeight, 1);

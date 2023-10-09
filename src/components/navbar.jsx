@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import moment from 'moment';
+import setPromiseInterval from 'set-promise-interval';
 
 class NavBar extends Component {
-    state = {  };
+    state = {
+        time: moment().format('YYYY-MM-DD HH:mm:ss'),
+    };
+
+    componentDidMount() {
+        setPromiseInterval(() => {  // 设置定时器更新当前时间
+            this.setState({time: moment().format('YYYY-MM-DD HH:mm:ss')})
+        }, 200);
+    }
 
     handleLogout = () => {
         $.ajax({
@@ -23,7 +33,7 @@ class NavBar extends Component {
         if (this.props.is_login) {
             return (
                 <li className="nav-item">
-                    <Link className="nav-link" to="/calculator">Calculator</Link>
+                    <Link className="nav-link" to="/calculator">💡Calculator</Link>
                 </li>
             )
         } else {
@@ -35,7 +45,7 @@ class NavBar extends Component {
         if (this.props.is_login) {
             return (
                 <li className="nav-item">
-                    <Link className="nav-link" to="/editor">Editor</Link>
+                    <Link className="nav-link" to="/editor">💻Editor</Link>
                 </li>
             )
         } else {
@@ -47,14 +57,18 @@ class NavBar extends Component {
         if (this.props.is_login) {
             return (
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">{this.props.username}</Link>
-                    </li>
-                    <li className="nav-item" style={{paddingTop: '8px'}}>
-                        |
-                    </li>
-                    <li className="nav-item">
-                        <div style={{cursor: 'pointer'}} onClick={this.handleLogout} className="nav-link">Logout</div>
+                    <li className="nav-item dropdown">
+                        <span className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {this.props.username}
+                        </span>
+                        <ul className="dropdown-menu">
+                            <li><Link className="dropdown-item" to="/myspace">My Space</Link></li>
+                            <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
+                            <hr />
+                            <li>
+                                <span style={{cursor: 'pointer'}} onClick={this.handleLogout} className="dropdown-item">Logout</span>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             )
@@ -63,9 +77,6 @@ class NavBar extends Component {
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
-                    </li>
-                    <li className="nav-item" style={{paddingTop: '8px'}}>
-                        |
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/register">Register</Link>
@@ -80,19 +91,22 @@ class NavBar extends Component {
         return (
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">AsanoSaki's Calculator & Editor</Link>
+                    <Link className="navbar-brand" to="/">AsanoSaki's Tools</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/home">Home</Link>
+                                <Link className="nav-link" to="/home">🏠Home</Link>
                             </li>
                             {this.render_calculator()}
                             {this.render_editor()}
                             <li className="nav-item">
-                                <Link className="nav-link" to="/about">About</Link>
+                                <Link className="nav-link" to="/about">📨About</Link>
+                            </li>
+                            <li className="nav-item" style={{fontWeight: 500, fontSize: '1.6rem', color: 'rgb(132, 202, 240)', marginLeft: '10px'}}>
+                                ⏱️{this.state.time}
                             </li>
                         </ul>
                         {this.render_userinfo()}

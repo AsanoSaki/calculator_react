@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from datetime import datetime
 
 def getinfo(request):
     user = request.user
@@ -10,4 +11,8 @@ def getinfo(request):
         return JsonResponse({
             'result': 'success',
             'username': user.username,
+            'email': user.email,
+            'intro': user.intro,
+            'date_joined': user.date_joined.strftime('%Y-%m-%d'),
+            'gender': user.gender,
         })
