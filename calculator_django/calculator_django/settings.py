@@ -143,7 +143,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '1195595343@qq.com'
-EMAIL_HOST_PASSWORD = 'sxgcascgglfujaib'
+EMAIL_HOST_USER = '******@qq.com'  # your email address
+EMAIL_HOST_PASSWORD = '******'  # your authorization code
 
-RECIPIENT_ADDRESS = ['1195595343@qq.com']
+RECIPIENT_ADDRESS = ['******@qq.com']  # recipient email address
